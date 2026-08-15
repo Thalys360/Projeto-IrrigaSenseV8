@@ -1,0 +1,80 @@
+{
+  "irrigasense": {
+    "sistema": {
+      "config": {
+        "modo": "automatico",
+        "protecaoOffline": true
+      },
+      "telemetry": {
+        "espOnline": false,
+        "arduinoOnline": false,
+        "wifiOnline": false,
+        "ultimaComunicacao": 0
+      }
+    },
+    "zonas": {
+      "zona1": {
+        "config": {
+          "nome": "Tomate",
+          "cultura": "Tomate",
+          "minimo": 60,
+          "maximo": 80,
+          "ativa": true,
+          "protecaoNoturna": {
+            "ativa": true,
+            "inicio": "20:00",
+            "fim": "05:30",
+            "limiteCritico": 45,
+            "maxSegundos": 15,
+            "intervaloMinutos": 120
+          }
+        },
+        "telemetry": {
+          "umidade": 0,
+          "bomba": false
+        }
+      },
+      "zona2": {
+        "config": {
+          "nome": "Feijão",
+          "cultura": "Feijão",
+          "minimo": 55,
+          "maximo": 80,
+          "ativa": true,
+          "protecaoNoturna": {
+            "ativa": true,
+            "inicio": "20:00",
+            "fim": "05:30",
+            "limiteCritico": 40,
+            "maxSegundos": 15,
+            "intervaloMinutos": 120
+          }
+        },
+        "telemetry": {
+          "umidade": 0,
+          "bomba": false
+        }
+      }
+    },
+    "config": {
+      "vazoesEstimadas": {
+        "pump1": 0.6,
+        "pump2": 0.6
+      }
+    },
+    "historico": {},
+    "comandos": {},
+    "confirmacoes": {},
+    "perfis": {},
+    "calibracao": {
+      "sensor1": {
+        "dry": "",
+        "wet": ""
+      },
+      "sensor2": {
+        "dry": "",
+        "wet": ""
+      }
+    }
+  }
+}

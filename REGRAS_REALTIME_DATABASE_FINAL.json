@@ -1,0 +1,69 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "irrigasense": {
+      "zonas": {
+        "$zona": {
+          ".read": true,
+          "config": {
+            ".write": "auth != null && auth.uid === 'ruk4pA6CsNbkYmgKK90Dg0wc9s63'",
+            ".validate": "newData.hasChildren(['nome','cultura','minimo','maximo','ativa','protecaoNoturna']) && newData.child('nome').isString() && newData.child('nome').val().length <= 80 && newData.child('cultura').isString() && newData.child('minimo').isNumber() && newData.child('minimo').val() >= 0 && newData.child('minimo').val() <= 100 && newData.child('maximo').isNumber() && newData.child('maximo').val() >= 0 && newData.child('maximo').val() <= 100 && newData.child('minimo').val() < newData.child('maximo').val()"
+          },
+          "telemetry": {
+            ".write": "auth != null && auth.uid === 'VYRVNNaHbxclxMv4EBWNz7yWtUW2'",
+            ".validate": "newData.hasChildren(['umidade','bomba']) && newData.child('umidade').isNumber() && newData.child('umidade').val() >= 0 && newData.child('umidade').val() <= 100 && newData.child('bomba').isBoolean()"
+          }
+        }
+      },
+      "sistema": {
+        ".read": true,
+        "config": {
+          ".write": "auth != null && auth.uid === 'ruk4pA6CsNbkYmgKK90Dg0wc9s63'"
+        },
+        "telemetry": {
+          ".write": "auth != null && auth.uid === 'VYRVNNaHbxclxMv4EBWNz7yWtUW2'"
+        }
+      },
+      "historico": {
+        ".read": true,
+        ".indexOn": [
+          "timestampCliente"
+        ],
+        "$registro": {
+          ".write": "auth != null && (auth.uid === 'ruk4pA6CsNbkYmgKK90Dg0wc9s63' || auth.uid === 'VYRVNNaHbxclxMv4EBWNz7yWtUW2')",
+          ".validate": "newData.hasChildren(['data','hora','zona','mensagem','tipo'])"
+        }
+      },
+      "comandos": {
+        ".read": "auth != null && (auth.uid === 'ruk4pA6CsNbkYmgKK90Dg0wc9s63' || auth.uid === 'VYRVNNaHbxclxMv4EBWNz7yWtUW2')",
+        "$comando": {
+          ".write": "auth != null && (auth.uid === 'ruk4pA6CsNbkYmgKK90Dg0wc9s63' || auth.uid === 'VYRVNNaHbxclxMv4EBWNz7yWtUW2')",
+          ".validate": "newData.hasChildren(['id','zona','acao','duracaoSegundos','status','origem']) && newData.child('zona').isNumber() && newData.child('zona').val() >= 1 && newData.child('zona').val() <= 2 && newData.child('acao').isString() && (newData.child('acao').val() === 'IRRIGAR' || newData.child('acao').val() === 'PARAR') && newData.child('duracaoSegundos').isNumber() && newData.child('duracaoSegundos').val() >= 0 && newData.child('duracaoSegundos').val() <= 60"
+        }
+      },
+      "confirmacoes": {
+        ".read": "auth != null && (auth.uid === 'ruk4pA6CsNbkYmgKK90Dg0wc9s63' || auth.uid === 'VYRVNNaHbxclxMv4EBWNz7yWtUW2')",
+        "$confirmacao": {
+          ".write": "auth != null && auth.uid === 'VYRVNNaHbxclxMv4EBWNz7yWtUW2'"
+        }
+      },
+      "perfis": {
+        ".read": true,
+        ".write": "auth != null && auth.uid === 'ruk4pA6CsNbkYmgKK90Dg0wc9s63'"
+      },
+      "calibracao": {
+        ".read": "auth != null && (auth.uid === 'ruk4pA6CsNbkYmgKK90Dg0wc9s63' || auth.uid === 'VYRVNNaHbxclxMv4EBWNz7yWtUW2')",
+        ".write": "auth != null && auth.uid === 'ruk4pA6CsNbkYmgKK90Dg0wc9s63'"
+      },
+      "config": {
+        ".read": true,
+        ".write": "auth != null && auth.uid === 'ruk4pA6CsNbkYmgKK90Dg0wc9s63'"
+      },
+      "security": {
+        ".read": "auth != null && auth.uid === 'ruk4pA6CsNbkYmgKK90Dg0wc9s63'",
+        ".write": "auth != null && auth.uid === 'ruk4pA6CsNbkYmgKK90Dg0wc9s63'"
+      }
+    }
+  }
+}
