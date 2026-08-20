@@ -1,0 +1,21 @@
+IRRIGASENSE — PACOTE VISUAL
+
+Coloque estes arquivos na RAIZ do repositório:
+- firebase-bridge.js  (substituir o atual)
+- manual-countdown.js
+- visual-upgrade.js
+
+Coloque a pasta inteira:
+- assets/
+
+Não precisa alterar Arduino, ESP-01, regras do Firebase, app.js, index.html ou styles.css.
+
+O pacote adiciona:
+- mascote na Home;
+- banner do IrrigaSense como fundo visual da Home;
+- mascote na Central de Ajuda;
+- mascote discreto no rodapé;
+- imagem da cultura nas duas zonas;
+- prévia da cultura na Configuração das Zonas;
+- busca automática da imagem da planta via Wikipédia, com fallback visual;
+- contador regressivo do modo manual.
