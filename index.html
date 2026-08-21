@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b6b45">
+  <meta name="description" content="IrrigaSense 2.0 — irrigação inteligente com automação, monitoramento, duas zonas e conectividade.">
+  <title>IrrigaSense 2.0</title>
+  <link rel="stylesheet" href="styles.css?v=20260815b">
+</head>
+<body>
+  <div id="overlay" class="overlay"></div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-head">
+      <button id="closeMenu" class="icon-btn" aria-label="Fechar menu">☰</button>
+      <div class="brand">
+        <div class="brand-mark">🌱</div>
+        <div class="brand-copy">
+          <strong>IrrigaSense</strong>
+          <small>2.0</small>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav" id="nav">
+      <button class="nav-item active" data-view="inicio"><span>🏠</span><em>Início</em></button>
+      <button class="nav-item" data-view="painel"><span>📊</span><em>Painel</em></button>
+      <button class="nav-item" data-view="zonas"><span>🌱</span><em>Configuração das Zonas</em></button>
+      <button class="nav-item" data-view="manual"><span>💧</span><em>Controle Manual</em></button>
+      <button class="nav-item" data-view="historico"><span>🕒</span><em>Histórico</em></button>
+      <button class="nav-item" data-view="graficos"><span>📈</span><em>Gráficos</em></button>
+      <button class="nav-item" data-view="perfis"><span>💾</span><em>Perfis</em></button>
+      <button class="nav-item" data-view="calibracao"><span>🎯</span><em>Calibração</em></button>
+      <button class="nav-item" data-view="conectividade"><span>📡</span><em>Conectividade</em></button>
+      <button class="nav-item" data-view="telegram"><span>🤖</span><em>Telegram</em></button>
+      <button class="nav-item" data-view="galeria"><span>🖼️</span><em>Galeria do Projeto</em></button>
+      <button class="nav-item" data-view="sobre"><span>ℹ️</span><em>Sobre o Projeto</em></button>
+      <button class="nav-item" data-view="ajuda"><span>❓</span><em>Central de Ajuda</em></button>
+      <button class="nav-item admin-link" data-view="admin"><span>🔐</span><em>Painel do Administrador</em></button>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="status-dot online"></span>
+      <span id="sidebarSystemMode">Firebase conectado</span>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <button id="openMenu" class="icon-btn mobile-menu" aria-label="Abrir menu">☰</button>
+      <div class="topbar-title">
+        <span class="eyebrow">IERN — Campus Alexandria</span>
+        <h1 id="pageTitle">Início</h1>
+      </div>
+      <div class="topbar-actions">
+        <span id="topSystemPill" class="pill warning"><i></i>Aguardando dispositivo</span>
+        <button id="themeToggle" class="icon-btn" aria-label="Alternar tema">◐</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- INÍCIO -->
+      <section class="view active" id="view-inicio">
+        <div class="hero">
+          <div class="hero-copy">
+            <span class="kicker">Tecnologia agrícola • IoT • Sustentabilidade</span>
+            <h2>Irrigação inteligente para um futuro sustentável</h2>
+            <p>O IrrigaSense 2.0 monitora a umidade do solo, automatiza a irrigação e permite adaptar cada zona às necessidades de diferentes cultivos.</p>
+            <div class="hero-actions">
+              <button class="btn primary" data-jump="painel">Acessar painel</button>
+              <button class="btn ghost light" data-jump="sobre">Conhecer o projeto</button>
+            </div>
+            <div class="hero-stats">
+              <div><strong>2</strong><span>Zonas independentes</span></div>
+              <div><strong>21 + 1</strong><span>Culturas configuráveis</span></div>
+              <div><strong>24h</strong><span>Monitoramento contínuo</span></div>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-plant">🌿</div>
+            <div class="floating-card f1"><small>Zona 1</small><strong id="heroZone1">Tomate</strong><span id="heroHum1">67% de umidade</span></div>
+            <div class="floating-card f2"><small>Zona 2</small><strong id="heroZone2">Feijão</strong><span id="heroHum2">54% de umidade</span></div>
+            <div class="floating-card f3"><small>Modo</small><strong>Automático</strong><span>Controle local ativo</span></div>
+          </div>
+        </div>
+
+        <section class="section">
+          <div class="section-heading">
+            <span class="kicker">Por que o projeto existe?</span>
+            <h2>Tecnologia para apoiar o manejo da irrigação</h2>
+            <p>O IrrigaSense foi pensado para acompanhar continuamente a umidade do solo e ajudar a evitar situações de excesso ou falta de água.</p>
+          </div>
+          <div class="cards four">
+            <article class="feature-card"><div class="feature-icon">💧</div><h3>Uso consciente da água</h3><p>Irrigar com base na condição real do solo.</p></article>
+            <article class="feature-card"><div class="feature-icon">🌱</div><h3>Cultivos diferentes</h3><p>Cada zona pode ter limites próprios.</p></article>
+            <article class="feature-card"><div class="feature-icon">⏱️</div><h3>Automação local</h3><p>O Arduino continua tomando decisões mesmo sem internet.</p></article>
+            <article class="feature-card"><div class="feature-icon">📱</div><h3>Acompanhamento remoto</h3><p>Site, Firebase e Telegram ampliam o acesso.</p></article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading"><span class="kicker">Arquitetura</span><h2>Do sensor ao celular</h2></div>
+          <div class="flow">
+            <div class="flow-node"><span>🌱</span><strong>Sensor</strong><small>Mede a umidade</small></div><div class="flow-arrow">→</div>
+            <div class="flow-node"><span>🧠</span><strong>Arduino Uno</strong><small>Decide localmente</small></div><div class="flow-arrow">→</div>
+            <div class="flow-node"><span>💧</span><strong>Relé + Bomba</strong><small>Irriga a zona</small></div><div class="flow-arrow">→</div>
+            <div class="flow-node"><span>📡</span><strong>ESP-01</strong><small>Conecta à rede</small></div><div class="flow-arrow">→</div>
+            <div class="flow-node"><span>☁️</span><strong>Firebase</strong><small>Sincroniza dados</small></div><div class="flow-arrow">→</div>
+            <div class="flow-node"><span>📱</span><strong>Site + Telegram</strong><small>Controle remoto</small></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading"><span class="kicker">Galeria</span><h2>O projeto em imagens</h2><p>As imagens inseridas pelos administradores aparecem aqui.</p></div>
+          <div id="homeGallery" class="gallery-grid"></div>
+          <button class="btn ghost" data-jump="galeria">Abrir galeria completa</button>
+        </section>
+      </section>
+
+      <!-- PAINEL -->
+      <section class="view" id="view-painel">
+        <div class="page-intro">
+          <div><span class="kicker">Monitoramento</span><h2>Painel IrrigaSense</h2><p>Acompanhe as duas zonas, o modo e a conectividade.</p></div>
+          <div class="inline-pills">
+            <span class="pill success">🤖 Automático</span>
+            <span class="pill night">🌙 Proteção noturna</span>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="zone-card">
+            <div class="zone-head"><div><span class="zone-label">Zona 1</span><h3 id="dashName1">Tomate</h3><small id="dashCrop1">Tomate</small></div><span id="pumpBadge1" class="pump-badge off">Bomba desligada</span></div>
+            <div id="ring1" class="humidity-ring"><strong id="dashHum1">67%</strong><span>Umidade</span></div>
+            <div class="meter"><div id="meter1"></div></div>
+            <div class="zone-meta"><span>Faixa configurada<b id="dashRange1">60%–80%</b></span><span>Status<b id="soilStatus1">Adequado</b></span></div>
+          </article>
+          <article class="zone-card">
+            <div class="zone-head"><div><span class="zone-label">Zona 2</span><h3 id="dashName2">Feijão</h3><small id="dashCrop2">Feijão</small></div><span id="pumpBadge2" class="pump-badge on">Bomba ligada</span></div>
+            <div id="ring2" class="humidity-ring"><strong id="dashHum2">54%</strong><span>Umidade</span></div>
+            <div class="meter"><div id="meter2"></div></div>
+            <div class="zone-meta"><span>Faixa configurada<b id="dashRange2">55%–80%</b></span><span>Status<b id="soilStatus2">Abaixo do ideal</b></span></div>
+          </article>
+        </div>
+
+        <div class="summary-grid">
+          <article class="summary-card"><span>🌱</span><div><small>Umidade média</small><strong id="avgHumidity">61%</strong></div></article>
+          <article class="summary-card"><span>💧</span><div><small>Bombas ativas</small><strong id="activePumps">1/2</strong></div></article>
+          <article class="summary-card"><span>📡</span><div><small>ESP-01</small><strong id="espStatusSummary">Offline</strong></div></article>
+          <article class="summary-card"><span>🕒</span><div><small>Última comunicação</small><strong id="lastCommunication">há poucos segundos</strong></div></article>
+        </div>
+
+        <div class="system-grid">
+          <article class="system-card"><span id="wifiStatusDot" class="status-dot warning"></span><div><small>Wi-Fi</small><strong id="wifiStatusText">Aguardando ESP-01</strong></div></article>
+          <article class="system-card"><span id="firebaseStatusDot" class="status-dot warning"></span><div><small>Firebase</small><strong id="firebaseStatusText">Conectando...</strong></div></article>
+          <article class="system-card"><span class="status-dot online"></span><div><small>Arduino</small><strong>Controle local ativo</strong></div></article>
+          <article class="system-card"><span class="status-dot online"></span><div><small>Telegram</small><strong>Bot disponível</strong></div></article>
+        </div>
+      </section>
+
+      <!-- ZONAS -->
+      <section class="view" id="view-zonas">
+        <div class="page-intro"><div><span class="kicker">Configuração</span><h2>Configuração das Zonas</h2><p>Selecione a cultura, ajuste a faixa e configure a proteção noturna.</p></div></div>
+        <div class="config-grid">
+          <form class="config-card zone-form" data-zone="1">
+            <div class="config-title"><span>1</span><div><small>Zona 1</small><h3>Sensor 1 + Bomba 1</h3></div></div>
+            <label>Nome da zona<input id="zoneName1" type="text"></label>
+            <label>Cultura<select id="culture1"></select></label>
+            <label id="customWrap1" class="hidden">Nome da cultura personalizada<input id="customCrop1" type="text"></label>
+            <div class="input-pair">
+              <label>Umidade mínima (%)<input id="min1" type="number" min="0" max="100"></label>
+              <label>Umidade máxima (%)<input id="max1" type="number" min="0" max="100"></label>
+            </div>
+            <div id="rangePreview1" class="range-preview"></div>
+
+            <details class="night-settings" open>
+              <summary>🌙 Proteção Noturna</summary>
+              <label class="check-row"><input id="nightEnabled1" type="checkbox"><span>Ativar nesta zona</span></label>
+              <div class="input-pair">
+                <label>Início<input id="nightStart1" type="time"></label>
+                <label>Fim<input id="nightEnd1" type="time"></label>
+              </div>
+              <div class="input-pair">
+                <label>Limite crítico (%)<input id="critical1" type="number" min="0" max="100"></label>
+                <label>Máximo por irrigação (s)<input id="nightMax1" type="number" min="5" max="120" step="5"></label>
+              </div>
+              <label>Intervalo mínimo entre irrigações (min)<input id="nightInterval1" type="number" min="10" max="720" step="10"></label>
+            </details>
+            <button class="btn primary" type="submit">Salvar Zona 1</button>
+          </form>
+
+          <form class="config-card zone-form" data-zone="2">
+            <div class="config-title"><span>2</span><div><small>Zona 2</small><h3>Sensor 2 + Bomba 2</h3></div></div>
+            <label>Nome da zona<input id="zoneName2" type="text"></label>
+            <label>Cultura<select id="culture2"></select></label>
+            <label id="customWrap2" class="hidden">Nome da cultura personalizada<input id="customCrop2" type="text"></label>
+            <div class="input-pair">
+              <label>Umidade mínima (%)<input id="min2" type="number" min="0" max="100"></label>
+              <label>Umidade máxima (%)<input id="max2" type="number" min="0" max="100"></label>
+            </div>
+            <div id="rangePreview2" class="range-preview"></div>
+
+            <details class="night-settings" open>
+              <summary>🌙 Proteção Noturna</summary>
+              <label class="check-row"><input id="nightEnabled2" type="checkbox"><span>Ativar nesta zona</span></label>
+              <div class="input-pair">
+                <label>Início<input id="nightStart2" type="time"></label>
+                <label>Fim<input id="nightEnd2" type="time"></label>
+              </div>
+              <div class="input-pair">
+                <label>Limite crítico (%)<input id="critical2" type="number" min="0" max="100"></label>
+                <label>Máximo por irrigação (s)<input id="nightMax2" type="number" min="5" max="120" step="5"></label>
+              </div>
+              <label>Intervalo mínimo entre irrigações (min)<input id="nightInterval2" type="number" min="10" max="720" step="10"></label>
+            </details>
+            <button class="btn primary" type="submit">Salvar Zona 2</button>
+          </form>
+        </div>
+        <div class="notice info">As faixas são presets iniciais do IrrigaSense e devem ser refinadas após a calibração dos sensores e testes no solo real.</div>
+      </section>
+
+      <!-- MANUAL -->
+      <section class="view" id="view-manual">
+        <div class="page-intro">
+          <div><span class="kicker">Segurança</span><h2>Controle Manual</h2><p>Acionamento temporizado das bombas, protegido por senha.</p></div>
+          <span id="manualLockPill" class="pill warning">🔒 Bloqueado</span>
+        </div>
+
+        <div id="manualLockPanel" class="lock-panel">
+          <div class="lock-icon">🔐</div>
+          <h3>Modo manual bloqueado</h3>
+          <p>Digite a senha do modo manual.</p>
+          <div class="unlock-row">
+            <input id="manualPassword" type="password" placeholder="Senha do modo manual" autocomplete="off">
+            <button id="unlockManual" class="btn primary" type="button">Desbloquear</button>
+          </div>
+          <small id="manualError" class="form-error"></small>
+        </div>
+
+        <div id="manualGrid" class="manual-grid locked">
+          <article class="manual-card">
+            <div class="manual-card-head"><div><span class="zone-label">Zona 1</span><h3 id="manualName1">Tomate</h3></div><span id="manualPumpBadge1" class="pump-badge off">Desligada</span></div>
+            <p>Umidade atual: <strong id="manualHum1">67%</strong></p>
+            <label>Duração
+              <select id="manualDuration1">
+                <option value="5">5 segundos</option>
+                <option value="10">10 segundos</option>
+                <option value="15" selected>15 segundos</option>
+                <option value="20">20 segundos</option>
+                <option value="25">25 segundos</option>
+                <option value="30">30 segundos</option>
+                <option value="45">45 segundos</option>
+                <option value="60">60 segundos</option>
+              </select>
+            </label>
+            <div id="countdown1" class="countdown">Pronta para irrigação manual</div>
+            <div class="manual-actions">
+              <button class="btn primary start-irrigation" data-zone="1" type="button">💧 Iniciar irrigação</button>
+              <button class="btn danger stop-irrigation" data-zone="1" type="button">⛔ Parar imediatamente</button>
+            </div>
+          </article>
+
+          <article class="manual-card">
+            <div class="manual-card-head"><div><span class="zone-label">Zona 2</span><h3 id="manualName2">Feijão</h3></div><span id="manualPumpBadge2" class="pump-badge on">Ligada</span></div>
+            <p>Umidade atual: <strong id="manualHum2">54%</strong></p>
+            <label>Duração
+              <select id="manualDuration2">
+                <option value="5">5 segundos</option>
+                <option value="10">10 segundos</option>
+                <option value="15" selected>15 segundos</option>
+                <option value="20">20 segundos</option>
+                <option value="25">25 segundos</option>
+                <option value="30">30 segundos</option>
+                <option value="45">45 segundos</option>
+                <option value="60">60 segundos</option>
+              </select>
+            </label>
+            <div id="countdown2" class="countdown">Pronta para irrigação manual</div>
+            <div class="manual-actions">
+              <button class="btn primary start-irrigation" data-zone="2" type="button">💧 Iniciar irrigação</button>
+              <button class="btn danger stop-irrigation" data-zone="2" type="button">⛔ Parar imediatamente</button>
+            </div>
+          </article>
+        </div>
+
+        <button id="lockManual" class="btn ghost hidden" type="button">Bloquear modo manual</button>
+        <div class="notice warning">O site envia o comando ao Firebase e aguarda a confirmação do ESP-01 e do Arduino antes de marcar a ação como concluída.</div>
+      </section>
+
+      <!-- HISTÓRICO -->
+      <section class="view" id="view-historico">
+        <div class="page-intro"><div><span class="kicker">Registros</span><h2>Histórico</h2><p>Leituras, irrigações, alterações e eventos do sistema.</p></div><button id="clearHistory" class="btn ghost" type="button">Limpar demonstração</button></div>
+        <div id="historyList" class="history-list"></div>
+      </section>
+
+      <!-- GRÁFICOS -->
+      <section class="view" id="view-graficos">
+        <div class="page-intro">
+          <div>
+            <span class="kicker">Dados e consumo</span>
+            <h2>Gráficos do IrrigaSense</h2>
+            <p>Visualize cada cultura separadamente e acompanhe o consumo estimado de água das duas zonas.</p>
+          </div>
+          <select id="chartPeriod" class="compact-select">
+            <option>Hoje</option>
+            <option>7 dias</option>
+            <option>30 dias</option>
+          </select>
+        </div>
+
+        <div class="chart-metrics">
+          <article class="chart-metric"><span>💧</span><div><small>Consumo estimado hoje</small><strong id="estimatedTotalWater">0,00 L</strong></div></article>
+          <article class="chart-metric"><span>🌱</span><div><small id="waterMetricName1">Zona 1</small><strong id="estimatedWater1">0,00 L</strong></div></article>
+          <article class="chart-metric"><span>🌿</span><div><small id="waterMetricName2">Zona 2</small><strong id="estimatedWater2">0,00 L</strong></div></article>
+          <article class="chart-metric"><span>⏱️</span><div><small>Tempo total de irrigação</small><strong id="estimatedIrrigationTime">0 s</strong></div></article>
+        </div>
+
+        <div class="charts-two">
+          <article class="chart-panel">
+            <div class="chart-panel-head">
+              <div><span class="zone-label">Zona 1</span><h3 id="chartTitle1">Tomate</h3><small>Umidade da cultura</small></div>
+              <span class="chart-value" id="chartCurrent1">67%</span>
+            </div>
+            <canvas id="humidityChart1" width="900" height="390"></canvas>
+          </article>
+
+          <article class="chart-panel">
+            <div class="chart-panel-head">
+              <div><span class="zone-label">Zona 2</span><h3 id="chartTitle2">Feijão</h3><small>Umidade da cultura</small></div>
+              <span class="chart-value" id="chartCurrent2">54%</span>
+            </div>
+            <canvas id="humidityChart2" width="900" height="390"></canvas>
+          </article>
+        </div>
+
+        <article class="chart-panel water-chart-panel">
+          <div class="chart-panel-head">
+            <div>
+              <span class="kicker">Estimativa</span>
+              <h3>Consumo de água por zona</h3>
+              <small>Calculado a partir do tempo de acionamento e da vazão estimada das bombas.</small>
+            </div>
+            <span class="estimate-badge">≈ valor estimado</span>
+          </div>
+          <canvas id="waterChart" width="1100" height="390"></canvas>
+          <div class="water-note">
+            <strong>Como calculamos:</strong> tempo de irrigação × vazão estimada da bomba. 
+            Até medirmos a vazão real, este gráfico é apenas uma estimativa para acompanhamento.
+          </div>
+        </article>
+      </section>
+
+      <!-- PERFIS -->
+      <section class="view" id="view-perfis">
+        <div class="page-intro"><div><span class="kicker">Configurações salvas</span><h2>Perfis de Cultivo</h2><p>Salve combinações completas das duas zonas.</p></div><button id="saveProfile" class="btn primary" type="button">Salvar perfil atual</button></div>
+        <div id="profilesGrid" class="profiles-grid"></div>
+      </section>
+
+      <!-- CALIBRAÇÃO -->
+      <section class="view" id="view-calibracao">
+        <div class="page-intro"><div><span class="kicker">Sensores</span><h2>Calibração</h2><p>Cada sensor terá referências próprias.</p></div></div>
+        <div class="config-grid">
+          <form class="config-card calibration-form" data-sensor="1">
+            <div class="config-title"><span>1</span><div><small>Sensor 1</small><h3>Calibração individual</h3></div></div>
+            <label>Solo seco<input id="dry1" type="number"></label>
+            <label>Solo úmido<input id="wet1" type="number"></label>
+            <button class="btn primary" type="submit">Salvar calibração</button>
+          </form>
+          <form class="config-card calibration-form" data-sensor="2">
+            <div class="config-title"><span>2</span><div><small>Sensor 2</small><h3>Calibração individual</h3></div></div>
+            <label>Solo seco<input id="dry2" type="number"></label>
+            <label>Solo úmido<input id="wet2" type="number"></label>
+            <button class="btn primary" type="submit">Salvar calibração</button>
+          </form>
+        </div>
+        <div class="notice info">A conversão real das leituras continuará sendo feita pelo Arduino para que a automação local funcione mesmo sem internet.</div>
+      </section>
+
+      <!-- CONECTIVIDADE -->
+      <section class="view" id="view-conectividade">
+        <div class="page-intro"><div><span class="kicker">Comunicação</span><h2>Conectividade</h2><p>Estado do Arduino, ESP-01, Wi-Fi, Firebase e Telegram.</p></div></div>
+
+        <div class="connect-grid">
+          <article class="connect-card"><span>📡</span><small>ESP-01</small><strong>Online</strong><p>Ponte entre Arduino e serviços remotos.</p></article>
+          <article class="connect-card"><span>📶</span><small>Wi-Fi</small><strong>Conectado</strong><p>Rede salva ou hotspot da equipe.</p></article>
+          <article class="connect-card"><span>☁️</span><small>Firebase</small><strong id="connectFirebaseText">Conectando...</strong><p>Sincronização online das configurações, telemetria, fotos e comandos.</p></article>
+          <article class="connect-card"><span>🧠</span><small>Arduino</small><strong>Controle local</strong><p>Continua controlando as bombas sem internet.</p></article>
+        </div>
+
+        <section class="section">
+          <span class="kicker">Configuração de rede</span>
+          <h2>IrrigaSense-Config</h2>
+          <p>Se o ESP-01 não conseguir entrar em uma rede conhecida, a proposta é criar uma rede temporária chamada <strong>IrrigaSense-Config</strong>. O usuário poderá conectar o celular e cadastrar uma nova rede Wi-Fi.</p>
+        </section>
+      </section>
+
+      <!-- TELEGRAM -->
+      <section class="view" id="view-telegram">
+        <div class="telegram-hero">
+          <div><span class="kicker">Controle pelo celular</span><h2>Bot do Telegram</h2><p>O bot trabalha com duas zonas e utiliza as configurações sincronizadas pelo Firebase.</p></div>
+          <a class="btn primary" href="https://t.me/Irrigasense_bot" target="_blank" rel="noopener">Abrir @Irrigasense_bot</a>
+        </div>
+        <div class="cards four">
+          <article class="feature-card"><div class="feature-icon">▶️</div><h3>/start</h3><p>Inicia o assistente.</p></article>
+          <article class="feature-card"><div class="feature-icon">📊</div><h3>/status</h3><p>Resumo do sistema.</p></article>
+          <article class="feature-card"><div class="feature-icon">💧</div><h3>/umidade</h3><p>Consulta as duas zonas.</p></article>
+          <article class="feature-card"><div class="feature-icon">🌱</div><h3>/plantas</h3><p>Consulta as zonas.</p></article>
+          <article class="feature-card"><div class="feature-icon">⚙️</div><h3>/modo</h3><p>Consulta ou altera o modo.</p></article>
+          <article class="feature-card"><div class="feature-icon">🕒</div><h3>/historico</h3><p>Consulta eventos.</p></article>
+          <article class="feature-card"><div class="feature-icon">📈</div><h3>/estatisticas</h3><p>Mostra estatísticas.</p></article>
+          <article class="feature-card"><div class="feature-icon">❓</div><h3>/ajuda</h3><p>Exibe orientações.</p></article>
+        </div>
+      </section>
+
+      <!-- GALERIA -->
+      <section class="view" id="view-galeria">
+        <div class="page-intro"><div><span class="kicker">Memórias do projeto</span><h2>Galeria do Projeto</h2><p>Protótipo, equipe, feiras, apresentações, premiações e evolução.</p></div></div>
+        <div id="projectGallery" class="gallery-grid large"></div>
+        <div id="galleryEmpty" class="empty-gallery hidden">Ainda não há fotos adicionadas.</div>
+      </section>
+
+      <!-- SOBRE -->
+      <section class="view" id="view-sobre">
+        <div class="about-hero">
+          <span class="kicker">Ciência, tecnologia e sustentabilidade</span>
+          <h2>Sobre o Projeto — IrrigaSense</h2>
+          <p>O IrrigaSense é um sistema de irrigação inteligente desenvolvido para automatizar o monitoramento da umidade do solo e auxiliar no uso mais eficiente da água.</p>
+        </div>
+
+        <div class="prose-card">
+          <p>O projeto integra eletrônica, programação, automação e comunicação sem fio. A primeira versão utilizou sensores de umidade, Arduino Uno R3, bombas, relés, ESP-01, Firebase, site e Telegram.</p>
+          <p>O IrrigaSense 2.0 trabalha com duas zonas independentes, cada uma formada por um sensor e uma bomba. O sistema permite escolher culturas, definir limites, criar perfis, calibrar sensores, usar proteção noturna e acompanhar os dados à distância.</p>
+          <p>O Arduino continua responsável pela automação local. O ESP-01 atua como ponte para Wi-Fi, Firebase e Telegram. Assim, a irrigação automática essencial pode continuar mesmo sem internet.</p>
+        </div>
+
+        <section class="section">
+          <div class="section-heading"><span class="kicker">Sistema físico</span><h2>LEDs</h2></div>
+          <div class="cards three">
+            <article class="feature-card"><div class="feature-icon">🟡</div><h3>Sistema ligado</h3><p>1 LED amarelo.</p></article>
+            <article class="feature-card"><div class="feature-icon">🟢</div><h3>Bomba ligada</h3><p>2 LEDs verdes, um por zona.</p></article>
+            <article class="feature-card"><div class="feature-icon">🔴</div><h3>Bomba desligada</h3><p>2 LEDs vermelhos, um por zona.</p></article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading"><span class="kicker">Equipe</span><h2>Pessoas por trás do IrrigaSense</h2></div>
+          <div class="team-grid">
+            <article class="team-card"><div class="avatar team-photo" data-member-photo="thalys"><span>TE</span></div><span>Desenvolvedor</span><h3>Thalys Eduardo da Silva Lourenço</h3><a href="https://www.instagram.com/__thalys._/" target="_blank">◎ @__thalys._</a></article>
+            <article class="team-card"><div class="avatar team-photo" data-member-photo="mary"><span>ME</span></div><span>Desenvolvedora</span><h3>Mary Ellen Karla Sales Cabral</h3><a href="https://www.instagram.com/Mary_ellen5615/" target="_blank">◎ @Mary_ellen5615</a></article>
+            <article class="team-card"><div class="avatar team-photo" data-member-photo="eduarda"><span>ME</span></div><span>Desenvolvedora</span><h3>Maria Eduarda Sales Cabral</h3><a href="https://www.instagram.com/eduardasales.__/" target="_blank">◎ @eduardasales.__</a></article>
+            <article class="team-card"><div class="avatar team-photo" data-member-photo="eriberto"><span>EV</span></div><span>Orientador</span><h3>Prof. Dr. Eriberto Vagner de Souza Freitas</h3><a href="https://www.instagram.com/freitassvagner/" target="_blank">◎ @freitassvagner</a></article>
+            <article class="team-card"><div class="avatar team-photo" data-member-photo="rayanna"><span>RC</span></div><span>Coorientadora</span><h3>Profª Dra. Rayanna Campos Ferreira</h3><a href="https://www.instagram.com/Rayanna.cf/" target="_blank">◎ @Rayanna.cf</a></article>
+            <article class="team-card"><div class="avatar team-photo" data-member-photo="pedro"><span>PK</span></div><span>Colaborador</span><h3>Pedro Kaio Gonçalves Penha</h3><a href="https://www.instagram.com/pedrokaiogpoficial_/" target="_blank">◎ @pedrokaiogpoficial_</a></article>
+          </div>
+        </section>
+
+        <div class="institution-card"><span>🏫</span><div><small>Instituição</small><h3>IERN — Campus Alexandria</h3><p>Alexandria, Rio Grande do Norte</p></div></div>
+      </section>
+
+      <!-- AJUDA -->
+      <section class="view" id="view-ajuda">
+        <div class="page-intro"><div><span class="kicker">Suporte</span><h2>Central de Ajuda</h2><p>Orientações sobre o IrrigaSense 2.0.</p></div></div>
+
+        <div class="assistant-card">
+          <div class="assistant-icon">🤖</div>
+          <div>
+            <span class="kicker">Assistente IrrigaSense</span>
+            <h2>ChatGPT como apoio ao projeto</h2>
+            <p>O assistente poderá explicar configurações, calibração, proteção noturna e, futuramente, consultar dados reais do Firebase através de uma integração segura.</p>
+            <div class="suggestions"><span>Qual zona está mais seca?</span><span>Por que a bomba não ligou?</span><span>Como calibrar o Sensor 1?</span><span>A proteção noturna está ativa?</span></div>
+            <a class="btn primary" href="https://chatgpt.com/" target="_blank" rel="noopener">Abrir o ChatGPT</a>
+          </div>
+        </div>
+
+        <div class="faq">
+          <details open><summary>Como funciona o modo automático?</summary><p>A bomba pode ligar abaixo do mínimo e desligar no máximo configurado.</p></details>
+          <details><summary>Como funciona a proteção noturna?</summary><p>À noite, o sistema evita irrigações longas ou repetidas e só permite uma irrigação de segurança quando a umidade chega a um limite crítico.</p></details>
+          <details><summary>Como funciona o modo manual?</summary><p>Depois da senha correta, escolha 5, 10, 15, 20, 25, 30, 45 ou 60 segundos. A bomba desliga sozinha ao final.</p></details>
+          <details><summary>Funciona sem internet?</summary><p>Sim. A automação essencial permanece no Arduino.</p></details>
+          <details><summary>Como interpretar os LEDs?</summary><p>Amarelo: sistema ligado. Verde: bomba ligada. Vermelho: bomba desligada.</p></details>
+        </div>
+      </section>
+
+      <!-- ADMIN -->
+      <section class="view" id="view-admin">
+        <div class="page-intro"><div><span class="kicker">Área restrita</span><h2>Painel do Administrador</h2><p>Gerencie configurações, fotos da equipe, galeria e segurança.</p></div><span id="adminLockPill" class="pill warning">🔒 Bloqueado</span></div>
+
+        <div id="adminLockPanel" class="lock-panel">
+          <div class="lock-icon">🛡️</div>
+          <h3>Acesso administrativo</h3>
+          <p>Entre com a conta de administrador cadastrada no Firebase Authentication.</p>
+          <div class="admin-login-fields">
+            <input id="adminEmailInput" type="email" placeholder="E-mail do administrador" autocomplete="username">
+            <input id="adminPasswordInput" type="password" placeholder="Senha" autocomplete="current-password">
+          </div>
+          <div class="unlock-row">
+            <button id="unlockAdmin" class="btn primary" type="button">Entrar com Firebase</button>
+            <button id="resetAdminPassword" class="btn ghost" type="button">Esqueci a senha</button>
+          </div>
+          <small id="adminError" class="form-error"></small>
+          <small class="demo-note">O acesso é validado pelo Firebase Authentication e pelo UID autorizado.</small>
+        </div>
+
+        <div id="adminPanel" class="admin-panel hidden">
+          <div class="admin-grid">
+            <article class="admin-card">
+              <span class="kicker">Segurança</span>
+              <h3>Alterar senha do modo manual</h3>
+              <label>Nova senha<input id="newManualPassword" type="password"></label>
+              <label>Confirmar senha<input id="confirmManualPassword" type="password"></label>
+              <button id="changeManualPassword" class="btn primary" type="button">Salvar</button>
+            </article>
+
+            <article class="admin-card">
+              <span class="kicker">Segurança</span>
+              <h3>Conta administrativa</h3>
+              <p id="adminAccountInfo">Autenticada pelo Firebase.</p>
+              <button id="sendPasswordReset" class="btn ghost" type="button">Enviar redefinição de senha</button>
+            </article>
+
+            <article class="admin-card gallery-admin">
+              <span class="kicker">Galeria</span>
+              <h3>Adicionar foto</h3>
+              <label>Imagem<input id="galleryFile" type="file" accept="image/*"></label>
+              <label>Título<input id="galleryTitle" type="text" placeholder="Ex.: FEBRACE 2026"></label>
+              <label>Legenda<textarea id="galleryCaption" rows="3"></textarea></label>
+              <label>Data / evento<input id="galleryDate" type="text" placeholder="Ex.: Março de 2026"></label>
+              <label class="check-row"><input id="galleryFeatured" type="checkbox"><span>Destacar na página inicial</span></label>
+              <button id="addGalleryPhoto" class="btn primary" type="button">Adicionar à galeria</button>
+              <small class="demo-note">As imagens são comprimidas e salvas no Firebase para aparecerem em outros aparelhos.</small>
+            </article>
+
+            <article class="admin-card">
+              <span class="kicker">Estimativa de água</span>
+              <h3>Vazão estimada das bombas</h3>
+              <p>Use estes valores apenas até medir a vazão real de cada bomba.</p>
+              <label>Bomba 1 — litros por minuto<input id="flowRate1" type="number" min="0.01" max="20" step="0.01"></label>
+              <label>Bomba 2 — litros por minuto<input id="flowRate2" type="number" min="0.01" max="20" step="0.01"></label>
+              <button id="saveFlowRates" class="btn primary" type="button">Salvar vazões estimadas</button>
+            </article>
+
+            <article class="admin-card team-photo-admin">
+              <span class="kicker">Equipe</span>
+              <h3>Fotos de perfil da equipe</h3>
+              <p>Escolha uma foto para aparecer acima do nome e do @ de cada integrante.</p>
+              <div id="teamPhotoManager" class="team-photo-manager"></div>
+              <small class="demo-note">As fotos de perfil são comprimidas e salvas no Firebase. Você pode trocar ou remover quando quiser.</small>
+            </article>
+
+            <article class="admin-card">
+              <span class="kicker">Sessão</span>
+              <h3>Finalizar acesso</h3>
+              <button id="lockAdmin" class="btn danger" type="button">Sair do painel</button>
+            </article>
+          </div>
+
+          <section class="section">
+            <div class="section-heading"><span class="kicker">Galeria</span><h2>Gerenciar fotos</h2></div>
+            <div id="adminGalleryList" class="admin-gallery-list"></div>
+          </section>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div><strong>🌱 IrrigaSense 2.0</strong><span>Tecnologia, inovação e sustentabilidade aplicadas à irrigação.</span></div>
+        <div><span>IERN — Campus Alexandria</span><span>Rio Grande do Norte</span></div>
+      </footer>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script type="module" src="firebase-bridge.js?v=20260821b"></script>
+  <script src="app.js?v=20260815b"></script>
+</body>
+</html>
