@@ -336,3 +336,6 @@ import("./manual-countdown.js?v=20260821a").catch(error => {
 import("./visual-upgrade.js?v=20260821b").catch(error => {
   console.error("Falha ao carregar melhorias visuais:", error);
 });
+import("./system-mode.js?v=20260823a").catch(error => {
+  console.error("Falha ao carregar controle de modo:", error);
+});
